@@ -1,19 +1,20 @@
-import type { Config } from "tailwindcss"
-import defaultConfig from "shadcn/ui/tailwind.config"
+import type { Config } from "tailwindcss";
+import { fontFamily } from "tailwindcss/defaultTheme";
 
 const config: Config = {
-  ...defaultConfig,
-  content: ["./app/**/*.{js,ts,jsx,tsx,mdx}", "./components/**/*.{js,ts,jsx,tsx,mdx}", "*.{js,ts,jsx,tsx,mdx}"],
+  darkMode: ["class"],
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
   theme: {
-    ...defaultConfig.theme,
     extend: {
-      ...defaultConfig.theme.extend,
       fontFamily: {
-        inter: ["var(--font-inter)", "system-ui", "sans-serif"],
-        manrope: ["var(--font-manrope)", "system-ui", "sans-serif"],
+        inter: ["var(--font-inter)", ...fontFamily.sans],
+        manrope: ["var(--font-manrope)", ...fontFamily.sans],
       },
       colors: {
-        ...defaultConfig.theme.extend.colors,
         teal: {
           50: "#f0fdfa",
           100: "#ccfbf1",
@@ -34,7 +35,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [...defaultConfig.plugins, require("tailwindcss-animate")],
-}
+  plugins: [require("tailwindcss-animate")],
+};
 
-export default config
+export default config;

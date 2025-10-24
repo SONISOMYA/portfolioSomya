@@ -36,7 +36,7 @@ importers:
         specifier: ^19
         version: 19.0.0(react@19.0.0)
       shadcn:
-        specifier: latest
+        specifier: 3.5.0
         version: 3.5.0(@types/node@22.0.0)(typescript@5.0.2)
       tailwind-merge:
         specifier: ^2.5.5
