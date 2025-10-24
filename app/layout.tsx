@@ -1,30 +1,31 @@
 import type React from "react"
-import "./globals.css"
 import type { Metadata } from "next"
-import { Inter, JetBrains_Mono } from "next/font/google"
+import { Inter, Manrope } from "next/font/google"
+import "./globals.css"
+import { ThemeProvider } from "@/components/theme-provider"
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
 })
 
-const jetbrainsMono = JetBrains_Mono({
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-mono",
+  variable: "--font-manrope",
 })
 
 export const metadata: Metadata = {
-  title: "Somya Soni | Full Stack Developer",
-  description: "Portfolio of Somya Soni - Full Stack Developer specializing in Spring Boot, Flutter, and IoT solutions",
-  keywords: ["Full Stack Developer", "Spring Boot", "Flutter", "IoT", "React", "Java", "Portfolio"],
+  title: "Somya Soni – Full Stack Developer Portfolio",
+  description:
+    "Minimal and modern portfolio of Somya Soni, Full Stack Developer skilled in Java, Spring Boot, Flutter, and IoT.",
+  keywords: ["Full Stack Developer", "Java", "Spring Boot", "Flutter", "IoT", "Portfolio", "Web Developer"],
   authors: [{ name: "Somya Soni" }],
   creator: "Somya Soni",
-  metadataBase: new URL("https://somyasoni.vercel.app"),
   openGraph: {
-    title: "Somya Soni | Full Stack Developer",
-    description: "Full Stack Developer specializing in Spring Boot, Flutter, and IoT solutions",
-    url: "https://somyasoni.vercel.app",
-    siteName: "Somya Soni Portfolio",
+    title: "Somya Soni – Full Stack Developer",
+    description: "Explore the minimal portfolio of Somya Soni, a Full Stack Developer.",
+    url: "https://somyaspace.vercel.app",
+    type: "website",
     images: [
       {
         url: "/og-image.png",
@@ -33,20 +34,27 @@ export const metadata: Metadata = {
         alt: "Somya Soni Portfolio",
       },
     ],
-    locale: "en_US",
-    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Somya Soni – Full Stack Developer",
+    description: "Minimal and modern portfolio of Somya Soni.",
+    creator: "@the_Somya_",
   },
     generator: 'v0.app'
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className={`${inter.variable} ${manrope.variable}`} suppressHydrationWarning>
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+      </head>
+      <body className="bg-[#F9FAFB] text-[#1E1E1E] dark:bg-slate-950 dark:text-slate-100">
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   )
 }

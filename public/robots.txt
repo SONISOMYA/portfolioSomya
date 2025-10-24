@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://somyaspace.vercel.app/sitemap.xml
